@@ -1,10 +1,10 @@
+import { Link } from "react-router";
 import type { Route } from "./+types/home";
-import { Welcome } from "../welcome/welcome";
 
-export function meta({}: Route.MetaArgs) {
+export function meta({ }: Route.MetaArgs) {
   return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
+    { title: "About" },
+    { name: "description", content: "Welcome to the about page of React Router!" },
   ];
 }
 
@@ -13,5 +13,12 @@ export function loader({ context }: Route.LoaderArgs) {
 }
 
 export default function Home({ loaderData }: Route.ComponentProps) {
-  return <Welcome message={loaderData.message} />;
+
+  const { message } = loaderData
+
+  return <>
+    <h1>Worksers + CLoudflare = LOVE</h1>
+    <h2>{message}</h2>
+    <Link to={'/about'}>Go to about</Link>
+  </>
 }
